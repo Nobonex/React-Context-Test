@@ -1,6 +1,6 @@
-import React from "react";
-import "./App.css";
-import TodoListPage from "./containers/TodoListContainer";
+import React from 'react';
+import './App.css';
+import TodoListPage from './containers/TodoListContainer/TodoListContainer';
 
 const App: React.FC = () => {
   return (

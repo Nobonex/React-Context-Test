@@ -15,4 +15,4 @@ interface RemoveItem {
   data: number;
 }
 
-export type TodoActionTypes = AddItem;
+export type TodoActionTypes = AddItem | RemoveItem;

@@ -1,5 +1,5 @@
 import { TodoItemModel } from '../../models/TodoItemModel';
-import { TodoActionTypes } from './actions';
+import { TodoActionTypes, TodoActions } from './actions';
 
 type TodoState = {
   list: TodoItemModel[];
@@ -14,6 +14,10 @@ export const reducer = (
   action: TodoActionTypes
 ): TodoState => {
   switch (action.type) {
+    case TodoActions.AddItem:
+      return state;
+    case TodoActions.RemoveItem:
+      return state;
     default:
       return state;
   }

@@ -1,11 +1,23 @@
-import React from "react";
-import { TodoItemModel } from "../../models/TodoItemModel";
+import React from 'react';
 
-const TodoItem: React.FC<{ item: TodoItemModel }> = ({ item }) => {
+interface ItemProps {
+  index: number;
+  text: string;
+  remove: (index: number) => void;
+}
+
+const TodoItem: React.FC<ItemProps> = ({ index, text, remove }) => {
   return (
-    <p>
-      {item.name} - {item.description}
-    </p>
+    <div className="Item">
+      {`${index + 1} ${text}`}
+      <span
+        onClick={() => {
+          remove(index);
+        }}
+      >
+        Done
+      </span>
+    </div>
   );
 };
 

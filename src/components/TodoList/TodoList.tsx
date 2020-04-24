@@ -1,12 +1,17 @@
-import React from "react";
-import { TodoItemModel } from "../../models/TodoItemModel";
-import TodoItem from "../TodoItem/TodoItem";
+import React from 'react';
+import TodoItem from '../TodoItem/TodoItem';
+import { TodoItemModel } from '../../models/TodoItemModel';
 
-const TodoList: React.FC<{ list: TodoItemModel[] }> = ({ list }) => {
+interface ListProps {
+  items: TodoItemModel[];
+  remove: (index: number) => void;
+}
+
+const TodoList: React.FC<ListProps> = ({ items, remove }) => {
   return (
     <>
-      {list.map((item, key) => (
-        <TodoItem key={key} item={item} />
+      {items.map((item, i) => (
+        <TodoItem text={item.text} index={i} key={i} remove={remove} />
       ))}
     </>
   );

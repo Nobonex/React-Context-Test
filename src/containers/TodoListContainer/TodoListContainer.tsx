@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
+import NewItem from '../../components/NewItem/NewItem';
 import TodoList from '../../components/TodoList/TodoList';
 import { TodoItemModel } from '../../models/TodoItemModel';
-import AddItem from '../../components/AddItem/AddItem';
 
 type TodoState = {
   list: TodoItemModel[];
@@ -14,15 +14,21 @@ const initialState: TodoState = {
 const TodoListContainer: React.FC = () => {
   const [state, setState] = useState(initialState);
 
-  const addItem = (name: string, description?: string) => {
-    setState({ list: [...state.list, { name, description }] });
+  const removeItem = (index: number) => {
+    setState({ list: state.list.filter((e, i) => i !== index) });
+  };
+
+  const addItem = (text: string) => {
+    setState({
+      list: [...state.list, { text }],
+    });
   };
 
   return (
-    <div style={{ width: '50%', margin: 'auto' }}>
-      <AddItem model={{ addItem }} />
+    <div>
+      <NewItem add={addItem} />
 
-      <TodoList list={state.list} />
+      <TodoList items={state.list} remove={removeItem} />
     </div>
   );
 };

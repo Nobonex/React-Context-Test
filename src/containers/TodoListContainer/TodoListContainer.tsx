@@ -5,12 +5,15 @@ import TodoList from '../../components/TodoList/TodoList';
 import { actionCreators } from '../../contexts/TodoContext/actions';
 
 const TodoListContainer: React.FC = () => {
-  const { state } = useTodoContext();
+  const { state, dispatch } = useTodoContext();
   return (
     <div>
-      <NewItem add={actionCreators.addItem} />
+      <NewItem add={(e) => dispatch(actionCreators.addItem(e))} />
 
-      <TodoList items={state.list} remove={() => {}} />
+      <TodoList
+        items={state.list}
+        remove={(e) => dispatch(actionCreators.removeItem(e))}
+      />
     </div>
   );
 };

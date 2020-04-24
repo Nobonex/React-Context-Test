@@ -1,5 +1,4 @@
 import { TodoItemModel } from '../../models/TodoItemModel';
-import { Dispatch } from 'react';
 
 export enum TodoActions {
   AddItem = 'Add Item',
@@ -19,9 +18,12 @@ interface RemoveItemAction {
 export type TodoActionTypes = AddItemAction | RemoveItemAction;
 
 export const actionCreators = {
-  addItem: (text: string) => (dispatch: Dispatch<AddItemAction>): void => {
-    console.log(text);
-
-    dispatch({ type: TodoActions.AddItem, data: { text } });
-  },
+  addItem: (text: string): AddItemAction => ({
+    type: TodoActions.AddItem,
+    data: { text },
+  }),
+  removeItem: (index: number): RemoveItemAction => ({
+    type: TodoActions.RemoveItem,
+    data: index,
+  }),
 };

@@ -9,6 +9,7 @@ const NewItem: React.FC<NewItemProps> = ({ add }) => {
 
   const handleAdd = () => {
     add(text);
+
     setText('');
   };
 

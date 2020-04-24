@@ -1,34 +1,16 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { useTodoContext } from '../../contexts/TodoContext/TodoContext';
 import NewItem from '../../components/NewItem/NewItem';
 import TodoList from '../../components/TodoList/TodoList';
-import { TodoItemModel } from '../../models/TodoItemModel';
-
-type TodoState = {
-  list: TodoItemModel[];
-};
-
-const initialState: TodoState = {
-  list: [],
-};
+import { actionCreators } from '../../contexts/TodoContext/actions';
 
 const TodoListContainer: React.FC = () => {
-  const [state, setState] = useState(initialState);
-
-  const removeItem = (index: number) => {
-    setState({ list: state.list.filter((e, i) => i !== index) });
-  };
-
-  const addItem = (text: string) => {
-    setState({
-      list: [...state.list, { text }],
-    });
-  };
-
+  const { state } = useTodoContext();
   return (
     <div>
-      <NewItem add={addItem} />
+      <NewItem add={actionCreators.addItem} />
 
-      <TodoList items={state.list} remove={removeItem} />
+      <TodoList items={state.list} remove={() => {}} />
     </div>
   );
 };

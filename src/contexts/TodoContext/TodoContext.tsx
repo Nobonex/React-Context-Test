@@ -14,9 +14,8 @@ export const TodoContext = createContext<TodoContext>({
 
 const TodoProvider: React.FC = (props) => {
   const [state, dispatch] = useReducer(todoReducer, initialTodoState);
-  const todoData = { state, dispatch };
 
-  return <TodoContext.Provider value={todoData} {...props} />;
+  return <TodoContext.Provider value={{ state, dispatch }} {...props} />;
 };
 
 export { TodoProvider };

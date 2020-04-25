@@ -2,10 +2,11 @@ import React from 'react';
 import './App.css';
 import TodoListPage from './containers/TodoListContainer/TodoListContainer';
 import { TodoProvider } from './contexts/TodoContext/TodoContext';
+import Compose from './contexts/Compose';
 
 const App: React.FC = () => {
   return (
-    <TodoProvider>
+    <Compose components={[TodoProvider]}>
       <div className="App">
         <header className="App-header">
           <h2>
@@ -17,7 +18,7 @@ const App: React.FC = () => {
           <TodoListPage />
         </header>
       </div>
-    </TodoProvider>
+    </Compose>
   );
 };
 

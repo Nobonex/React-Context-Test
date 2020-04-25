@@ -17,13 +17,12 @@ interface RemoveItemAction {
 
 export type TodoActionTypes = AddItemAction | RemoveItemAction;
 
-export const actionCreators = {
-  addItem: (text: string): AddItemAction => ({
-    type: TodoActions.AddItem,
-    data: { text },
-  }),
-  removeItem: (index: number): RemoveItemAction => ({
-    type: TodoActions.RemoveItem,
-    data: index,
-  }),
-};
+export const AddItem = (text: string): AddItemAction => ({
+  type: TodoActions.AddItem,
+  data: { text },
+});
+
+export const RemoveItem = (index: number): RemoveItemAction => ({
+  type: TodoActions.RemoveItem,
+  data: index,
+});

@@ -1,12 +1,12 @@
 import React from 'react';
+import { Provider } from 'react-redux';
 import './App.css';
 import TodoListPage from './containers/TodoListContainer/TodoListContainer';
-import { TodoProvider } from './contexts/TodoContext/TodoContext';
-import Compose from './contexts/Compose';
+import store from './store/configureStore';
 
 const App: React.FC = () => {
   return (
-    <Compose components={[TodoProvider]}>
+    <Provider store={store}>
       <div className="App">
         <header className="App-header">
           <h2>
@@ -18,7 +18,7 @@ const App: React.FC = () => {
           <TodoListPage />
         </header>
       </div>
-    </Compose>
+    </Provider>
   );
 };
 

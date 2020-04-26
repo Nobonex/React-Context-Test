@@ -1,18 +1,18 @@
 import { TodoItemModel } from '../../models/TodoItemModel';
 
-export enum TodoActionTypes {
+export enum TodoActions {
   AddTodo = 'Add Todo',
   RemoveTodo = 'Remove Todo',
 }
 
 export interface AddTodoAction {
-  type: TodoActionTypes.AddTodo;
+  type: TodoActions.AddTodo;
   item: TodoItemModel;
 }
 
 export interface RemoveTodoAction {
-  type: TodoActionTypes.RemoveTodo;
-  id: number;
+  type: TodoActions.RemoveTodo;
+  index: number;
 }
 
-export type TodoActions = AddTodoAction | RemoveTodoAction;
+export type TodoActionTypes = AddTodoAction | RemoveTodoAction;

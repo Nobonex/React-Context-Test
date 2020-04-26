@@ -6,7 +6,7 @@ export type TodoState = {
 };
 
 const initialState: TodoState = {
-  todos: [],
+  todos: [{ text: 'ayyy' }],
 };
 
 export const todoReducer = (
@@ -17,6 +17,10 @@ export const todoReducer = (
     case TodoActions.AddTodo:
       return { ...state, todos: [...state.todos, action.item] };
     case TodoActions.RemoveTodo:
+      return {
+        ...state,
+        todos: state.todos.filter((_e, i) => i !== action.index),
+      };
     default:
       return state;
   }

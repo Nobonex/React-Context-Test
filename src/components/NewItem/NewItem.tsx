@@ -1,16 +1,13 @@
 import React, { useState } from 'react';
-import { useTodoContext } from '../../contexts/TodoContext/TodoContext';
-import { AddItem } from '../../contexts/TodoContext/actions';
 
 interface NewItemProps {
   add: (text: string) => void;
 }
 
-const NewItem: React.FC = () => {
+const NewItem: React.FC<NewItemProps> = ({ add }) => {
   const [text, setText] = useState('');
-  const { dispatch } = useTodoContext();
   const handleAdd = () => {
-    dispatch(AddItem(text));
+    add(text);
 
     setText('');
   };

@@ -1,18 +1,17 @@
 import React from 'react';
 import TodoItem from '../TodoItem/TodoItem';
-import { useTodoContext } from '../../contexts/TodoContext/TodoContext';
-import { RemoveItem } from '../../contexts/TodoContext/actions';
+import { TodoItemModel } from '../../models/TodoItemModel';
 
-const TodoList: React.FC = () => {
-  const { state, dispatch } = useTodoContext();
+interface ListProps {
+  list: TodoItemModel[];
+}
 
-  const remove = (index: number) => {
-    dispatch(RemoveItem(index));
-  };
+const TodoList: React.FC<ListProps> = ({ list }) => {
+  const remove = (index: number) => {};
 
   return (
     <>
-      {state.list.map((item, i) => (
+      {list.map((item, i) => (
         <TodoItem text={item.text} index={i} key={i} remove={() => remove(i)} />
       ))}
     </>

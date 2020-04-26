@@ -6,7 +6,7 @@ export type TodoState = {
 };
 
 const initialState: TodoState = {
-  todos: [{ text: 'ayyy' }],
+  todos: [],
 };
 
 export const todoReducer = (

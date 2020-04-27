@@ -1,6 +1,6 @@
 import { createStore, combineReducers, applyMiddleware } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
-import thunk, { ThunkMiddleware } from 'redux-thunk';
+import thunk from 'redux-thunk';
 import { AuthActions } from './auth.actions';
 import { authReducer } from './auth.reducer';
 import { todoReducer } from '../containers/TodoListContainer/todo.reducer';
@@ -26,9 +26,7 @@ export const rootReducer = (
 
 const store = createStore(
   rootReducer,
-  composeWithDevTools(
-    applyMiddleware(thunk as ThunkMiddleware<AppState, AppActionTypes>)
-  )
+  composeWithDevTools(applyMiddleware(thunk))
 );
 
 export default store;
